@@ -3,6 +3,8 @@ import csv
 import requests
 from bs4 import BeautifulSoup
 
+#https://curlconverter.com/ 참조
+
 cookies = {
     'WMONID': 'm3CoZqmuOK4',
     'JSESSIONID': 'yFcwz7VmBAkn1T3oEkwGzrUHCk3zuq7toPTyQQ6aUAugs1T9nYevBZa7FbxZGycO.amV1c19kb21haW4vYWlzMQ==',
