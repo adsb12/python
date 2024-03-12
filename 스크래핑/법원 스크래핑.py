@@ -42,7 +42,7 @@ filename = "법원경매.csv"
 f = open(filename, "w", encoding="utf-8-sig", newline="")
 writer = csv.writer(f)
 
-columns_name = ["순위", "가격"] # 컬럼 속성명 만들기
+columns_name = ["순서", "가격"] # 컬럼 속성명 만들기
 
 writer.writerow(columns_name)
 
@@ -51,15 +51,15 @@ response.raise_for_status()
 
 # soup 객체 만들기
 soup = BeautifulSoup(response.text, "lxml")
-cartoonsBox = soup.find('table', attrs={"class": "Ltbl_list"}) # 전체 영역에서 'a' 태그를 찾지 않고 인기 급상승 영역으로 범위 제한
-cartoons = cartoonsBox.find_all('td', attrs={"class": "txtright"}) # 인기 급상승 영역에서 'a'태그 모두 찾아 변수 cartoons에 할당
+costbox = soup.find('table', attrs={"class": "Ltbl_list"}) # 전체 영역에서 'a' 태그를 찾지 않고 인기 급상승 영역으로 범위 제한
+costs = costbox.find_all('td', attrs={"class": "txtright"}) # 인기 급상승 영역에서 'a'태그 모두 찾아 변수 cartoons에 할당
 # print(cartoons)
 i = 1
 
 # 반복문으로 제목 가져오기(터미널 창 출력 및 엑셀 저장)
-for cartoon in cartoons: 
-    title = cartoon.text 
-    print(f"{str(i)}위: {title}")
-    data = [str(i), title]
+for cost in costs: 
+    price = cost.text 
+    print(f"{str(i)}위: {price}")
+    data = [str(i), price]
     writer.writerow(data)
     i += 1
