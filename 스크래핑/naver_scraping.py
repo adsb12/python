@@ -20,14 +20,14 @@ res.raise_for_status()
 
 # soup 객체 만들기
 soup = BeautifulSoup(res.text, "lxml")
-cartoonsBox = soup.find('div', attrs={"class": "chart_list_wrap"}) # 전체 영역에서 'a' 태그를 찾지 않고 인기 급상승 영역으로 범위 제한
-cartoons = cartoonsBox.find_all('span', attrs={"class": "txt"}) # 인기 급상승 영역에서 'a'태그 모두 찾아 변수 cartoons에 할당
-# print(cartoons)
+songBox = soup.find('div', attrs={"class": "chart_list_wrap"}) # 전체 영역에서 'a' 태그를 찾지 않고 인기 급상승 영역으로 범위 제한
+songs = songBox.find_all('span', attrs={"class": "txt"}) # 인기 급상승 영역에서 'a'태그 모두 찾아 변수 cartoons에 할당
+
 i = 1
 
 # 반복문으로 제목 가져오기(터미널 창 출력 및 엑셀 저장)
-for cartoon in cartoons: 
-    title = cartoon.text 
+for song in songs: 
+    title = song.text 
     print(f"{str(i)}위: {title}")
     data = [str(i), title]
     writer.writerow(data)
