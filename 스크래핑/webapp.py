@@ -8,4 +8,4 @@ def home():
        return 'Hello, world!'  #함수의 기능 설명
 
 if __name__=='__main__':       #run()함수를 사용하여 로컬 서버로 실행
-    app.run()   
+    app.run("0.0.0.0")   
