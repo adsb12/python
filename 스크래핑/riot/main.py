@@ -23,14 +23,4 @@ def search():
     db[name] = r_lists 
   return render_template("search.html", name = name, r_lists=r_lists, r_len=r_len)
 
-@app.route("/export") # 데이터 다운로드
-def export():
-  name = request.args.get("name")
-  if name == None:
-    return redirect("/")
-  if name not in db:
-    return redirect(f"/search?name={name}")
-  save_to_file(name, db[name])
-  return send_file(f"{name}.csv", as_attachment=True)
-
 app.run("0.0.0.0")
