@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>전적검색</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+</head>
+<body>
+  <main class="container">
+    <hgroup>
+      <h1>Search Results for "{{name}}":</h1>
+    <a target="_blank" href="/export?name={{name}}">Export to file</a>
+    </hgroup>
+    <figure><table role="grid">
+      <thead>
+        <tr>
+          <th>solo/team</th>
+          <th>tier</th>
+          <th>points</th>
+          <th>win/losses</th>
+          <th>챔프</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {% if r_len != 0 %}
+            {% for r_list in r_lists %}
+              <td>{{r_list[0]}}</td>
+              <td>{{r_list[1]}}{{r_list[2]}}리그</td>
+              <td>{{r_list[-1]}}</td>
+              <td>{{r_list[3]}} 승 {{r_list[4]}} 패</td>
+              <td>{{r_list[5]}}</td>
+            {% endfor %}
+          {% else %}
+            <td>리그가 없다.</td>
+          {%endif%}
+        </tr>
+      </tbody>
+    </table>
+    <a target="_blank" href="/">홈으로</a>
+  </figure>
+  </main>
+</body>
+</html>
