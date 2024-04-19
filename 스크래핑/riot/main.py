@@ -1,6 +1,7 @@
 
 from flask import Flask, render_template, request, redirect
 from riot import riot_crowl
+from flask import flash
 #함수 가져오기
 
 app = Flask("riot")         #어플리케이션 패키지의 이름
@@ -13,7 +14,7 @@ def home():
 @app.route("/search")                               #검색
 def search():
   name = request.args.get("name")             #작성한 이름들고오기
-  if name == None:
+  if name == None or name == "":
     return redirect("/")                                #없으면 다시빽
   if name in db: 
     r_lists = db[name]                                 #db에 있으면 db있는거 뿌림
